@@ -8,6 +8,11 @@ var webview = document.querySelector('#wv1');
 webview.addEventListener('newwindow', function(e) {
   window.open(e.targetUrl);
 });
+webview.addEventListener('permissionrequest', function(e) {
+	if (e.permission === 'download') {
+		e.request.allow();
+	}
+});
 
 onload = updateWebviews;
 window.onresize = updateWebviews;
